@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../Shared/Navbar';
@@ -18,7 +17,7 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  // SOLID: Separate login handling logic
+  // SOLID: Single Responsibility Principle (SRP) - handleLogin function only focuses on the login process.
   const handleLogin = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -49,7 +48,7 @@ const Login = () => {
     }
   };
 
-  // SOLID: Separate render for role based fields
+  // SOLID: Open/Closed Principle (OCP) - The renderRoleSpecificField function is open for extension (new roles could be added without changing the main login logic).
   const renderRoleSpecificField = () => {
     if (loginData.role === 'parent') {
       return (
